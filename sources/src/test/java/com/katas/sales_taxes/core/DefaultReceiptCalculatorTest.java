@@ -30,8 +30,8 @@ class DefaultReceiptCalculatorTest {
         good.setTaxable(true);
         cart.add(good, 1);
         Receipt receipt = receiptCalculator.calculate(cart);
-        assertEquals(0.195, receipt.getTaxes(), 0.000001);
-        assertEquals(2.145, receipt.getTotal(), 0.000001);
+        assertEquals(0.2, receipt.getTaxes(), 0.000001);
+        assertEquals(2.15, receipt.getTotal(), 0.000001);
     }
 
     @Test
@@ -51,7 +51,7 @@ class DefaultReceiptCalculatorTest {
         cart.add(good, 1);
         cart.add(good1, 4);
         Receipt receipt = receiptCalculator.calculate(cart);
-        assertEquals(1.071, receipt.getTaxes(), 0.000001);
-        assertEquals(20.541, receipt.getTotal(), 0.000001);
+        assertEquals(1.0, receipt.getTaxes(), 0.000001);
+        assertEquals(20.47, receipt.getTotal(), 0.000001);
     }
 }

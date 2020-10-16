@@ -35,7 +35,7 @@ class ConsoleReceiptPresenterTest {
         System.setOut(new java.io.PrintStream(out));
         receiptPresenter.present(receipt);
 
-        assertEquals(out.toString(), "4 imported coffee: 18.40\n1 soap: 2.15\nSales Taxes: 1.07\nTotal: 20.54\n");
+        assertEquals(out.toString(), "1 soap: 2.15\n4 imported coffee: 18.32\nSales Taxes: 1.00\nTotal: 20.47\n");
     }
 
 }

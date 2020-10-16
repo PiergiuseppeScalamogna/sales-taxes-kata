@@ -13,7 +13,11 @@ public class DefaultTaxCalculator implements TaxCalculator {
         if (good.isImported()) {
             tax += 0.05;
         }
-        return good.getPrice() * tax;
+        return round(good.getPrice() * tax);
+    }
+
+    private double round(double number) {
+        return Math.round(number * 20.0) / 20.0;
     }
 
 }

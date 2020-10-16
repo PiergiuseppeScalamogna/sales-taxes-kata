@@ -34,7 +34,7 @@ class DefaultTaxCalculatorTest {
         good.setImported(false);
         good.setTaxable(true);
         good.setPrice(1.1);
-        assertEquals(0.11, taxCalculator.taxOf(good), 0.000001);
+        assertEquals(0.1, taxCalculator.taxOf(good), 0.000001);
     }
 
     @Test
@@ -44,7 +44,7 @@ class DefaultTaxCalculatorTest {
         good.setImported(true);
         good.setTaxable(false);
         good.setPrice(3.2);
-        assertEquals(0.16, taxCalculator.taxOf(good), 0.000001);
+        assertEquals(0.15, taxCalculator.taxOf(good), 0.000001);
     }
 
     @Test
@@ -54,6 +54,6 @@ class DefaultTaxCalculatorTest {
         good.setImported(true);
         good.setTaxable(true);
         good.setPrice(11.75);
-        assertEquals(1.7625, taxCalculator.taxOf(good), 0.000001);
+        assertEquals(1.75, taxCalculator.taxOf(good), 0.000001);
     }
 }

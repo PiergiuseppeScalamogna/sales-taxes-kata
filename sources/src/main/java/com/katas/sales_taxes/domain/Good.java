@@ -12,6 +12,13 @@ public class Good {
     public Good() {
     }
 
+    public Good(String name, boolean taxable, boolean imported, double price) {
+        this.name = name;
+        this.taxable = taxable;
+        this.imported = imported;
+        this.price = price;
+    }
+
     public Good(Good other) {
         this.name = other.name;
         this.taxable = other.taxable;

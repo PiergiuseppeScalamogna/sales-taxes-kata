@@ -1,7 +1,6 @@
 package com.katas.sales_taxes.core;
 
 import com.katas.sales_taxes.domain.Cart;
-import com.katas.sales_taxes.domain.Good;
 import com.katas.sales_taxes.domain.Purchase;
 import com.katas.sales_taxes.domain.Receipt;
 

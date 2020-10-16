@@ -5,7 +5,7 @@ import com.katas.sales_taxes.domain.Good;
 import com.katas.sales_taxes.domain.Receipt;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DefaultReceiptCalculatorTest {
 

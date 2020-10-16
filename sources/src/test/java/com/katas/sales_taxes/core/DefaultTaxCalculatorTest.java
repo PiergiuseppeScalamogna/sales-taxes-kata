@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class DefaultTaxCalculatorTest {
@@ -13,12 +13,12 @@ class DefaultTaxCalculatorTest {
     private TaxCalculator taxCalculator;
 
     @BeforeAll
-    public void init(){
+    public void init() {
         taxCalculator = new DefaultTaxCalculator();
     }
 
     @Test
-    public void noTaxes(){
+    public void noTaxes() {
         Good good = new Good();
         good.setName("bread");
         good.setImported(false);
@@ -28,7 +28,7 @@ class DefaultTaxCalculatorTest {
     }
 
     @Test
-    public void basicTaxes(){
+    public void basicTaxes() {
         Good good = new Good();
         good.setName("soap");
         good.setImported(false);
@@ -38,7 +38,7 @@ class DefaultTaxCalculatorTest {
     }
 
     @Test
-    public void importTaxes(){
+    public void importTaxes() {
         Good good = new Good();
         good.setName("coffee");
         good.setImported(true);
@@ -48,7 +48,7 @@ class DefaultTaxCalculatorTest {
     }
 
     @Test
-    public void basicAndImportTaxes(){
+    public void basicAndImportTaxes() {
         Good good = new Good();
         good.setName("perfume");
         good.setImported(true);

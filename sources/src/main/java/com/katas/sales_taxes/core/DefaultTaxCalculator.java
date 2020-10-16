@@ -17,7 +17,7 @@ public class DefaultTaxCalculator implements TaxCalculator {
     }
 
     private double round(double number) {
-        return Math.round(number * 20.0) / 20.0;
+        return Math.ceil(number * 20.0) / 20.0;
     }
 
 }

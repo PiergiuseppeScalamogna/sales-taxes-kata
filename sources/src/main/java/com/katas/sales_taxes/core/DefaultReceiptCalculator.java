@@ -15,11 +15,11 @@ public class DefaultReceiptCalculator implements ReceiptCalculator {
     @Override
     public Receipt calculate(Cart cart) {
         Receipt receipt = new Receipt();
-        cart.getContent().forEach((good, quantity) -> {
+        cart.getContent().forEach(cartItem -> {
             Purchase purchase = new Purchase();
-            purchase.setGood(good);
-            purchase.setQuantity(quantity);
-            purchase.setTax(taxCalculator.taxOf(good) * quantity);
+            purchase.setGood(cartItem.getKey());
+            purchase.setQuantity(cartItem.getValue());
+            purchase.setTax(taxCalculator.taxOf(cartItem.getKey()) * cartItem.getValue());
             receipt.add(purchase);
         });
         return receipt;

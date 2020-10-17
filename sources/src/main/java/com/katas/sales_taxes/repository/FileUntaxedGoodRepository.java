@@ -6,21 +6,21 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
-public class FileUntaxedItemRepository implements UntaxedItemRepository {
+public class FileUntaxedGoodRepository implements UntaxedGoodRepository {
 
-    private String dictionaryPath;
+    private final String dictionaryPath;
 
-    public FileUntaxedItemRepository(String dictionaryPath) {
+    public FileUntaxedGoodRepository(String dictionaryPath) {
         this.dictionaryPath = dictionaryPath;
     }
 
     @Override
-    public boolean find(String name) throws UnableToReadRepositoryException {
+    public boolean find(String goodName) throws UnableToReadRepositoryException {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(new File(dictionaryPath)));
             String line;
             while ((line = reader.readLine()) != null) {
-                if (name.equals(line)) {
+                if (goodName.equals(line)) {
                     return true;
                 }
             }

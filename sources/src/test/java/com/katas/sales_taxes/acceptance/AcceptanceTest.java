@@ -10,8 +10,8 @@ import com.katas.sales_taxes.domain.Good;
 import com.katas.sales_taxes.domain.Receipt;
 import com.katas.sales_taxes.interpreter.CartItemInterpreter;
 import com.katas.sales_taxes.interpreter.DictionaryCartItemInterpreter;
-import com.katas.sales_taxes.repository.FileUntaxedItemRepository;
-import com.katas.sales_taxes.repository.UntaxedItemRepository;
+import com.katas.sales_taxes.repository.FileUntaxedGoodRepository;
+import com.katas.sales_taxes.repository.UntaxedGoodRepository;
 import com.katas.sales_taxes.view.ConsoleReceiptPresenter;
 import com.katas.sales_taxes.view.ReceiptPresenter;
 import org.junit.jupiter.api.BeforeAll;
@@ -30,7 +30,7 @@ public class AcceptanceTest {
     private ReceiptCalculator receiptCalculator;
     private ReceiptPresenter receiptPresenter;
     private ByteArrayOutputStream out;
-    private UntaxedItemRepository repository;
+    private UntaxedGoodRepository repository;
     private CartItemInterpreter interpreter;
 
     @BeforeAll
@@ -38,7 +38,7 @@ public class AcceptanceTest {
         taxCalculator = new DefaultTaxCalculator();
         receiptCalculator = new DefaultReceiptCalculator(taxCalculator);
         receiptPresenter = new ConsoleReceiptPresenter();
-        repository = new FileUntaxedItemRepository("src/test/resources/untaxable.txt");
+        repository = new FileUntaxedGoodRepository("src/test/resources/untaxable.txt");
         interpreter = new DictionaryCartItemInterpreter(repository);
     }
 

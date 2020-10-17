@@ -2,8 +2,8 @@ package com.katas.sales_taxes.repository;
 
 import com.katas.sales_taxes.exception.UnableToReadRepositoryException;
 
-public interface UntaxedItemRepository {
+public interface UntaxedGoodRepository {
 
-    boolean find(String name) throws UnableToReadRepositoryException;
+    boolean find(String goodName) throws UnableToReadRepositoryException;
 
 }

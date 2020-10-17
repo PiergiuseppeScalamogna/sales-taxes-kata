@@ -10,13 +10,13 @@ class FileUntaxedItemRepositoryTest {
 
     @Test
     public void found() throws UnableToReadRepositoryException {
-        UntaxedItemRepository untaxedItemRepository = new FileUntaxedItemRepository("src/test/resources/untaxable.txt");
+        UntaxedGoodRepository untaxedItemRepository = new FileUntaxedGoodRepository("src/test/resources/untaxable.txt");
         assertTrue(untaxedItemRepository.find("book"));
     }
 
     @Test
     public void Notfound() throws UnableToReadRepositoryException {
-        UntaxedItemRepository untaxedItemRepository = new FileUntaxedItemRepository("src/test/resources/untaxable.txt");
+        UntaxedGoodRepository untaxedItemRepository = new FileUntaxedGoodRepository("src/test/resources/untaxable.txt");
         assertFalse(untaxedItemRepository.find("music CD"));
     }
 

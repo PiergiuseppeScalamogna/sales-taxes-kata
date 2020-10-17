@@ -2,8 +2,8 @@ package com.katas.sales_taxes.interpreter;
 
 import com.katas.sales_taxes.domain.CartItem;
 import com.katas.sales_taxes.domain.Good;
-import com.katas.sales_taxes.repository.FileUntaxedItemRepository;
-import com.katas.sales_taxes.repository.UntaxedItemRepository;
+import com.katas.sales_taxes.repository.FileUntaxedGoodRepository;
+import com.katas.sales_taxes.repository.UntaxedGoodRepository;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,7 +12,7 @@ class DictionaryCartItemInterpreterTest {
 
     @Test
     void interpretTaxableGood() {
-        UntaxedItemRepository untaxedItemRepository = new FileUntaxedItemRepository("src/test/resources/untaxable.txt");
+        UntaxedGoodRepository untaxedItemRepository = new FileUntaxedGoodRepository("src/test/resources/untaxable.txt");
         CartItemInterpreter cartItemInterpreter = new DictionaryCartItemInterpreter(untaxedItemRepository);
         CartItem cartItem = cartItemInterpreter.interpret("1 music CD at 14.99");
         Good good = new Good();
@@ -26,7 +26,7 @@ class DictionaryCartItemInterpreterTest {
 
     @Test
     void interpretUntaxableGood() {
-        UntaxedItemRepository untaxedItemRepository = new FileUntaxedItemRepository("src/test/resources/untaxable.txt");
+        UntaxedGoodRepository untaxedItemRepository = new FileUntaxedGoodRepository("src/test/resources/untaxable.txt");
         CartItemInterpreter cartItemInterpreter = new DictionaryCartItemInterpreter(untaxedItemRepository);
         CartItem cartItem = cartItemInterpreter.interpret("2 chocolate bar at 1.50");
         Good good = new Good();
@@ -39,7 +39,7 @@ class DictionaryCartItemInterpreterTest {
 
     @Test
     void interpretImportedUntaxableGood() {
-        UntaxedItemRepository untaxedItemRepository = new FileUntaxedItemRepository("src/test/resources/untaxable.txt");
+        UntaxedGoodRepository untaxedItemRepository = new FileUntaxedGoodRepository("src/test/resources/untaxable.txt");
         CartItemInterpreter cartItemInterpreter = new DictionaryCartItemInterpreter(untaxedItemRepository);
         CartItem cartItem = cartItemInterpreter.interpret("2 imported chocolate bar at 1.50");
         Good good = new Good();
@@ -53,7 +53,7 @@ class DictionaryCartItemInterpreterTest {
 
     @Test
     void interpretImportedTaxableGood() {
-        UntaxedItemRepository untaxedItemRepository = new FileUntaxedItemRepository("src/test/resources/untaxable.txt");
+        UntaxedGoodRepository untaxedItemRepository = new FileUntaxedGoodRepository("src/test/resources/untaxable.txt");
         CartItemInterpreter cartItemInterpreter = new DictionaryCartItemInterpreter(untaxedItemRepository);
         CartItem cartItem = cartItemInterpreter.interpret("1 imported perfume at 32.25");
         Good good = new Good();

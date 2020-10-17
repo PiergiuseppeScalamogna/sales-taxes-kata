@@ -3,13 +3,13 @@ package com.katas.sales_taxes.interpreter;
 import com.katas.sales_taxes.domain.CartItem;
 import com.katas.sales_taxes.domain.Good;
 import com.katas.sales_taxes.exception.UnableToReadRepositoryException;
-import com.katas.sales_taxes.repository.UntaxedItemRepository;
+import com.katas.sales_taxes.repository.UntaxedGoodRepository;
 
 public class DictionaryCartItemInterpreter implements CartItemInterpreter {
 
-    private UntaxedItemRepository untaxedItemRepository;
+    private UntaxedGoodRepository untaxedItemRepository;
 
-    public DictionaryCartItemInterpreter(UntaxedItemRepository untaxedItemRepository) {
+    public DictionaryCartItemInterpreter(UntaxedGoodRepository untaxedItemRepository) {
         this.untaxedItemRepository = untaxedItemRepository;
     }
 

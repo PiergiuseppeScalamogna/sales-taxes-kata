@@ -1,6 +1,6 @@
 # sales-taxes-kata
 
-The Sales taxes kata provided by lastminute.com
+[![Build Status](https://travis-ci.com/PiergiuseppeScalamogna/sales-taxes-kata.svg?branch=master)](https://travis-ci.com/PiergiuseppeScalamogna/sales-taxes-kata)
 
 PROBLEM: SALES TAXES
 

@@ -13,7 +13,7 @@ class CartTest {
         Cart cart = new Cart();
         cart.add(good, 2);
 
-        assertTrue(cart.getContent().get(0).getValue() == 2);
+        assertTrue(cart.getContent().get(0).getQuantity() == 2);
     }
 
     @Test
@@ -39,7 +39,7 @@ class CartTest {
         cart.add(good1, 1);
         cart.add(good2, 1);
 
-        assertTrue(cart.getContent().get(0).getKey().equals(good1));
-        assertTrue(cart.getContent().get(1).getKey().equals(good2));
+        assertTrue(cart.getContent().get(0).getGood().equals(good1));
+        assertTrue(cart.getContent().get(1).getGood().equals(good2));
     }
 }

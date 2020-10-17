@@ -5,6 +5,7 @@ import com.katas.sales_taxes.core.DefaultTaxCalculator;
 import com.katas.sales_taxes.core.ReceiptCalculator;
 import com.katas.sales_taxes.core.TaxCalculator;
 import com.katas.sales_taxes.domain.Cart;
+import com.katas.sales_taxes.domain.CartItem;
 import com.katas.sales_taxes.domain.Good;
 import com.katas.sales_taxes.domain.Receipt;
 import com.katas.sales_taxes.interpreter.CartItemInterpreter;
@@ -13,7 +14,6 @@ import com.katas.sales_taxes.repository.FileUntaxedItemRepository;
 import com.katas.sales_taxes.repository.UntaxedItemRepository;
 import com.katas.sales_taxes.view.ConsoleReceiptPresenter;
 import com.katas.sales_taxes.view.ReceiptPresenter;
-import javafx.util.Pair;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -96,12 +96,12 @@ public class AcceptanceTest {
     @Test
     public void acceptance1WithInterpreter() {
         Cart cart = new Cart();
-        Pair<Good, Integer> cartItem1 = interpreter.interpret("1 book at 12.49");
-        Pair<Good, Integer> cartItem2 = interpreter.interpret("1 music CD at 14.99");
-        Pair<Good, Integer> cartItem3 = interpreter.interpret("1 chocolate bar at 0.85");
-        cart.add(cartItem1.getKey(), cartItem1.getValue());
-        cart.add(cartItem2.getKey(), cartItem2.getValue());
-        cart.add(cartItem3.getKey(), cartItem3.getValue());
+        CartItem cartItem1 = interpreter.interpret("1 book at 12.49");
+        CartItem cartItem2 = interpreter.interpret("1 music CD at 14.99");
+        CartItem cartItem3 = interpreter.interpret("1 chocolate bar at 0.85");
+        cart.add(cartItem1.getGood(), cartItem1.getQuantity());
+        cart.add(cartItem2.getGood(), cartItem2.getQuantity());
+        cart.add(cartItem3.getGood(), cartItem3.getQuantity());
         Receipt receipt = receiptCalculator.calculate(cart);
         receiptPresenter.present(receipt);
 
@@ -111,10 +111,10 @@ public class AcceptanceTest {
     @Test
     public void acceptance2WithInterpreter() {
         Cart cart = new Cart();
-        Pair<Good, Integer> cartItem1 = interpreter.interpret("1 imported box of chocolates at 10.00");
-        Pair<Good, Integer> cartItem2 = interpreter.interpret("1 imported bottle of perfume at 47.50");
-        cart.add(cartItem1.getKey(), cartItem1.getValue());
-        cart.add(cartItem2.getKey(), cartItem2.getValue());
+        CartItem cartItem1 = interpreter.interpret("1 imported box of chocolates at 10.00");
+        CartItem cartItem2 = interpreter.interpret("1 imported bottle of perfume at 47.50");
+        cart.add(cartItem1.getGood(), cartItem1.getQuantity());
+        cart.add(cartItem2.getGood(), cartItem2.getQuantity());
         Receipt receipt = receiptCalculator.calculate(cart);
         receiptPresenter.present(receipt);
 
@@ -124,14 +124,14 @@ public class AcceptanceTest {
     @Test
     public void acceptance3WithInterpreter() {
         Cart cart = new Cart();
-        Pair<Good, Integer> cartItem1 = interpreter.interpret("1 imported bottle of perfume at 27.99");
-        Pair<Good, Integer> cartItem2 = interpreter.interpret("1 bottle of perfume at 18.99");
-        Pair<Good, Integer> cartItem3 = interpreter.interpret("1 packet of headache pills at 9.75");
-        Pair<Good, Integer> cartItem4 = interpreter.interpret("1 box of imported chocolates at 11.25");
-        cart.add(cartItem1.getKey(), cartItem1.getValue());
-        cart.add(cartItem2.getKey(), cartItem2.getValue());
-        cart.add(cartItem3.getKey(), cartItem3.getValue());
-        cart.add(cartItem4.getKey(), cartItem4.getValue());
+        CartItem cartItem1 = interpreter.interpret("1 imported bottle of perfume at 27.99");
+        CartItem cartItem2 = interpreter.interpret("1 bottle of perfume at 18.99");
+        CartItem cartItem3 = interpreter.interpret("1 packet of headache pills at 9.75");
+        CartItem cartItem4 = interpreter.interpret("1 box of imported chocolates at 11.25");
+        cart.add(cartItem1.getGood(), cartItem1.getQuantity());
+        cart.add(cartItem2.getGood(), cartItem2.getQuantity());
+        cart.add(cartItem3.getGood(), cartItem3.getQuantity());
+        cart.add(cartItem4.getGood(), cartItem4.getQuantity());
         Receipt receipt = receiptCalculator.calculate(cart);
         receiptPresenter.present(receipt);
 

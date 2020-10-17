@@ -17,9 +17,9 @@ public class DefaultReceiptCalculator implements ReceiptCalculator {
         Receipt receipt = new Receipt();
         cart.getContent().forEach(cartItem -> {
             Purchase purchase = new Purchase();
-            purchase.setGood(cartItem.getKey());
-            purchase.setQuantity(cartItem.getValue());
-            purchase.setTax(taxCalculator.taxOf(cartItem.getKey()) * cartItem.getValue());
+            purchase.setGood(cartItem.getGood());
+            purchase.setQuantity(cartItem.getQuantity());
+            purchase.setTax(taxCalculator.taxOf(cartItem.getGood()) * cartItem.getQuantity());
             receipt.add(purchase);
         });
         return receipt;

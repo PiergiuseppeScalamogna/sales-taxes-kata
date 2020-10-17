@@ -7,7 +7,7 @@ import com.katas.sales_taxes.repository.UntaxedGoodRepository;
 
 public class DictionaryCartItemInterpreter implements CartItemInterpreter {
 
-    private UntaxedGoodRepository untaxedItemRepository;
+    private final UntaxedGoodRepository untaxedItemRepository;
 
     public DictionaryCartItemInterpreter(UntaxedGoodRepository untaxedItemRepository) {
         this.untaxedItemRepository = untaxedItemRepository;
@@ -15,10 +15,24 @@ public class DictionaryCartItemInterpreter implements CartItemInterpreter {
 
     @Override
     public CartItem interpret(String cartItem) {
-        Good good = new Good();
+        String[] tokens = tokenize(cartItem);
+        int quantity = Integer.parseInt(tokens[0]);
+        Good good = createBaseGoodFrom(tokens);
+        good.setPrice(Double.parseDouble(tokens[tokens.length - 1]) / quantity);
+        if (isTaxable(good.getName())) {
+            good.setTaxable(true);
+        }
+
+        return new CartItem(good, quantity);
+    }
+
+    private String[] tokenize(String cartItem) {
         String cleaned = cartItem.replaceAll("\\s+", " ");
-        String[] tokens = cleaned.split(" ");
-        Integer quantity = Integer.parseInt(tokens[0]);
+        return cleaned.split(" ");
+    }
+
+    private Good createBaseGoodFrom(String[] tokens) {
+        Good good = new Good();
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 1; i < tokens.length - 2; i++) {
             if (tokens[i].equalsIgnoreCase("imported")) {
@@ -28,13 +42,8 @@ public class DictionaryCartItemInterpreter implements CartItemInterpreter {
                 stringBuilder.append(" ");
             }
         }
-        good.setPrice(Double.parseDouble(tokens[tokens.length - 1]) / quantity);
         good.setName(stringBuilder.deleteCharAt(stringBuilder.length() - 1).toString());
-        if (isTaxable(good.getName())) {
-            good.setTaxable(true);
-        }
-
-        return new CartItem(good, quantity);
+        return good;
     }
 
     private boolean isTaxable(String name) {

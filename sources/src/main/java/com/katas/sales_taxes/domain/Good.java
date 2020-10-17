@@ -18,14 +18,7 @@ public class Good {
         this.imported = imported;
         this.price = price;
     }
-
-    public Good(Good other) {
-        this.name = other.name;
-        this.taxable = other.taxable;
-        this.imported = other.imported;
-        this.price = other.price;
-    }
-
+    
     public String getName() {
         return name;
     }

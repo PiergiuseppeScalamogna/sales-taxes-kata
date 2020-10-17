@@ -18,7 +18,7 @@ public class Good {
         this.imported = imported;
         this.price = price;
     }
-    
+
     public String getName() {
         return name;
     }
